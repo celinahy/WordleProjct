@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom: 0.3px solid rgb(105, 104, 104);
+  display: flex;
+}
+
+.leftnavbar {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex: 1.3;
+  height: 50px;
+}
+
+
+.rightnavbar {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex: 1;
+  height: 50px;
+}
+
+
+.navitem {
+  margin-left: 50px;
+  margin-right: 17px;
+}
+
+
+input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.darkmodecss {
+  background-color: #201f1f;
+  color: white;
+}
+
+
+.section {
+  display: flex;
+  flex: wrap;
+}
+
+#leftHTP {
+  display:flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#correct {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#startover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  width:150px;
+	height:60px;
+  background: #68bd64;
+	border-radius: 8px;
+}
+
+#startover:active {
+  box-shadow: 0 5px rgb(64, 63, 63);
+  transform: translateY(2px);
+  transform: translateX(2px);
+
+}
+
+#inputbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:110px;
+	height:110px;
+	border-style: solid;
+  border-color: black;
+  background: #585757;
+	border-radius: 25px;
+  margin: 50px;
+  
+}
+
+#rightHTP {
+  flex: 1;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  border-left: 1px solid grey;
+}
+
+#hintBanner {
+  display: flex;
+  flex: 1;
+  height: 50px;
+  background-color: rgb(235, 210, 45);
+}
+
+#correctGuess {
+  display: flex;
+  flex: 1;
+  height: 50px;
+  background-color: rgb(135, 135, 135);
+
+}
+
+#OOG {
+  display: flex;
+  flex: 1;
+  height: 50px;
+  background-color: rgb(255, 0, 0);
+}
+
+#board {
+  display: flex;
+  width: 310px;
+  height: 308px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.tile {
+  border: 2px solid rgb(178, 176, 176);
+  width: 70px;
+  height: 70px;
+  margin: 1.5px;
+
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.correct {
+  color: white;
+  background-color: green;
+  border-color: white;
+}
+
+.inword {
+  color: white;
+  background-color: rgb(161, 161, 45);
+  border-color: white;
+}
+
+.incorrect {
+  color: white;
+  background-color: grey;
+  border-color: white;
+}

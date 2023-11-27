@@ -1,13 +1,10 @@
 var columns = 4; //setting up in refresh function becuase we want it to restart after start over
 var rows = 4;
-
 var currColumn = 0;
 var currRow = 0;
 var endgame = false;
-
 let apiUrl = "http://localhost:3000/v1/wordle";
 let data;
-
 
 async function getJson(url) {
 
@@ -24,8 +21,6 @@ async function getJson(url) {
 	document.getElementById('startover').innerText = "Start Over";
 	data = data2;
 }
-
-
 
 function hideloader() { //loading function
 	document.getElementById('startover').innerText = "Loading...";
@@ -63,14 +58,10 @@ function update(wordObject) { //update function
 	}
 }
 
-
-
 function darkmodeToggle() { //darkmodeToggle function
 	var element = document.body;
 	element.classList.toggle("darkmodecss");
 }
-
-
 
 function instructions() { //how-to-play popup function
 	var x = document.getElementById("rightHTP");
@@ -80,8 +71,6 @@ function instructions() { //how-to-play popup function
 		x.style.display = "none";
 	}
 }
-
-
 
 function hintBanner(wordObject) { //popup banner function
 	let hint = wordObject.hint;
@@ -94,8 +83,6 @@ function hintBanner(wordObject) { //popup banner function
 	}
 }
 
-
-
 function correctGuess(wordObject) {
 
 	if (document.getElementById("hintBanner").style.display === "block") {
@@ -105,7 +92,6 @@ function correctGuess(wordObject) {
 	var z = document.getElementById("correctGuess");
 	z.innerText = "You guessed the word " + word + " correctly!";
 	z.style.display = "block";
-
 }
 
 function OOG(wordObject) {
@@ -116,9 +102,7 @@ function OOG(wordObject) {
 	let c = document.getElementById("OOG");
 	c.innerText = "You missed the word " + cWord + " and lost!";
 	c.style.display = "block";
-
 }
-
 
 function correctGif() {
 	var gif = document.getElementById("correct");
@@ -127,21 +111,14 @@ function correctGif() {
 	inputbox.style.display = "none";
 	board.style.display = "none";
 	gif.style.display = "inline-flex";
-
 }
-
-
 
 async function startOver() {
 	document.getElementById('startOver').disabled = true;
 	window.location.reload();
 }
 
-
-
 async function refresh() {
-
-
 	for (let i = 0; i < rows; i++) { //setting up board
 		for (let j = 0; j < columns; j++) {
 			let tile = document.createElement("span");
@@ -166,7 +143,6 @@ async function refresh() {
 	var OOG2 = document.getElementById("OOG");
 	OOG2.style.display = "none";
 
-
 	let currTile = document.getElementById( //setting index 0-0 tile to have a black border
 		currRow.toString() + "-" + currColumn.toString()
 	);
@@ -181,12 +157,9 @@ async function refresh() {
 		hintBanner(wordObject);
 	});
 
-
 	document.addEventListener("keyup", (e) => { //event for input
 
-
 		if (endgame) {
-
 			return;
 		}
 
@@ -215,11 +188,8 @@ async function refresh() {
 				}
 			}
 
-
 		} else if (e.code == "Backspace") {
-
 			if (0 < currColumn && currColumn <= columns) { //if backspace is pressed at valid position on board
-
 				if (currColumn != columns) {
 					document.getElementById(
 						currRow.toString() + "-" + currColumn.toString()
@@ -270,7 +240,6 @@ async function refresh() {
 					document.getElementById(
 						currRow.toString() + "-" + currColumn.toString()
 					).style.borderColor = "black";
-
 				}
 			}
 		}
@@ -282,8 +251,6 @@ async function refresh() {
 		}
 	});
 }
-
-
 
 //calling function
 window.onload = function() {

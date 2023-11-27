@@ -1,96 +1,72 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Wordle</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <script src="./wordle.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Wordle</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <script src="./wordle.js"></script>
 
-    <nav>
-      <div class="navbar">
-        <ul class="leftnavbar">
-          <li style="display: inline; font-size: 25px; padding-right: 30px;">
-            <h1>Wordle</h1>
-          </li>
-        </ul>
-        <ul class="rightnavbar">
-          <li class="navitem" style="list-style: none;">
-            <input type="checkbox" id="darkmode" onclick="darkmodeToggle()" />
-          </li>
-          <label for="darkmode" style="font-size: 1.7em;">&#9681;</label>
+  <nav>
+    <div class="navbar">
+      <ul class="leftnavbar">
+        <li style="display: inline; font-size: 25px; padding-right: 30px;">
+          <h1>Wordle</h1>
+        </li>
+      </ul>
+      <ul class="rightnavbar">
+        <li class="navitem" style="list-style: none;">
+          <input type="checkbox" id="darkmode" onclick="darkmodeToggle()" />
+        </li>
+        <label for="darkmode" style="font-size: 1.7em;">&#9681;</label>
 
-          <li class="navitem" style="list-style: none;">
-            <input type="checkbox" id="hint"/>
-          </li>
-          <label for="hint" style="font-size: 1.7em;">&#63;</label>
+        <li class="navitem" style="list-style: none;">
+          <input type="checkbox" id="hint"/>
+        </li>
+        <label for="hint" style="font-size: 1.7em;">&#63;</label>
 
-          <li class="navitem" style="list-style: none;">
-            <input type="checkbox" id="HTP" onclick="instructions()"/>
-          </li>
-          <label for="HTP" style="font-size: 1.7em; padding-right: 30px;"
-            >&#9432;</label
-          >
-        </ul>
+        <li class="navitem" style="list-style: none;">
+          <input type="checkbox" id="HTP" onclick="instructions()"/>
+        </li>
+        <label for="HTP" style="font-size: 1.7em; padding-right: 30px;">&#9432;</label>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div id="leftHTP">
+      <div id="board"></div>
+
+      <div id="correct">
+        <img src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif" />
       </div>
-    </nav>
+      <input type="checkbox" id="startOver" onclick="startOver()" />
+      <label for="startOver" id="startover" style="font-size: 25px; color: white;">Start Over</label>
+      <div id="inputbox"></div>
+    </div>
 
-    <section class="section">
-      <div id="leftHTP">
-        <div id="board"></div>
+    <div id="rightHTP">
+      <h2 style="padding-left: 40px;">How To Play</h2>
+      <ul style="list-style-type: circle;">
+        <li style="margin-bottom: 15px;">Start typing. The letters will appear in the boxes</li>
+        <li style="margin-bottom: 15px;">Remove letters with Backspace</li>
+        <li style="margin-bottom: 15px;">Hit Enter/Return to submit an answer</li>
+        <li style="margin-bottom: 15px;">Letters with green background are in the right spot</li>
+        <li style="margin-bottom: 15px;">Letters with yellow background exist in the word but are in the wrong spots</li>
+        <li style="margin-bottom: 15px;">Letters with gray background do not exist in the word</li>
+        <li style="margin-bottom: 15px;">If you need a hint, click the <strong>?</strong> icon</li>
+      </ul>
+    </div>
+  </section>
 
-        <div id="correct">
-          <img
-            src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif"
-          />
-        </div>
-        <input type="checkbox" id="startOver" onclick="startOver()" />
-        <label
-          for="startOver"
-          id="startover"
-          style="font-size: 25px; color: white;"
-          >Start Over</label
-        >
-        <div id="inputbox"></div>
-      </div>
+  <div id="hintBanner" style="text-align: center; padding-top: 25px;"></div>
+  <div id="correctGuess" style="text-align: center; padding-top: 25px;"></div>
+  <div id="OOG" style="text-align: center; padding-top: 25px;"></div>
 
-      <div id="rightHTP">
-        <h2 style="padding-left: 40px;">How To Play</h2>
-        <ul style="list-style-type: circle;">
-          <li style="margin-bottom: 15px;">
-            Start typing. The letters will appear in the boxes
-          </li>
-          <li style="margin-bottom: 15px;">Remove letters with Backspace</li>
-          <li style="margin-bottom: 15px;">
-            Hit Enter/Return to submit an answer
-          </li>
-          <li style="margin-bottom: 15px;">
-            Letters with green background are in the right spot
-          </li>
-          <li style="margin-bottom: 15px;">
-            Letters with yellow background exist in the word, but are in the
-            wrong spots
-          </li>
-          <li style="margin-bottom: 15px;">
-            Letters with gray background do not exist in the word
-          </li>
-          <li style="margin-bottom: 15px;">
-            If you need a hint, click the <strong>?</strong> icon
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <div id="hintBanner" style="text-align: center; padding-top: 25px;"></div>
-    <div id="correctGuess" style="text-align: center; padding-top: 25px;"></div>
-    <div id="OOG" style="text-align: center; padding-top: 25px;"></div>
-
-    <div style="border-top: 0.5px solid grey;"></div>
-    <br />
-    <p style="text-align: center; font-size: 12px; padding-bottom: 20px;">
-      @ Celina Hy 2023
-    </p>
-  </body>
+  <div style="border-top: 0.5px solid grey;"></div>
+  <br />
+  <p style="text-align: center; font-size: 12px; padding-bottom: 20px;">@ Celina Hy 2023</p>
+</body>
 </html>
